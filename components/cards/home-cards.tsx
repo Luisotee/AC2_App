@@ -13,7 +13,7 @@ export function HomeCards({
     <HStack mt="5" justifyContent="center">
       <Text mt="4">{desc}</Text>
       <IconButton
-        onPress={() => navigation.navigate("RegisterStudent")}
+        onPress={() => navigation.navigate(nextComponent)}
         icon={<Icon size="4xl" as={MaterialIcons} name={iconType} />}
       />
     </HStack>
