@@ -10,7 +10,7 @@ export function Home({ navigation }: any) {
         <HomeCards
           desc="Configurações"
           iconType="settings"
-          nextComponent=""
+          nextComponent="ToggleDarkMode"
           navigation={navigation}
         />
         <HomeCards
@@ -22,24 +22,30 @@ export function Home({ navigation }: any) {
         <HomeCards
           desc="Cadastrar Disciplina"
           iconType="input"
-          nextComponent=""
+          nextComponent="RegisterSubject"
           navigation={navigation}
         />
         <HomeCards
           desc="Cadastrar Professor"
           iconType="input"
-          nextComponent=""
+          nextComponent="RegisterTeacher"
           navigation={navigation}
         />
         <HomeCards
           desc="Cadastrar Turma"
           iconType="input"
-          nextComponent=""
+          nextComponent="RegisterClass"
           navigation={navigation}
         />
         <HomeCards
           desc="Histórico"
-          iconType="history"
+          iconType="input"
+          nextComponent="RegisterHistory"
+          navigation={navigation}
+        />
+        <HomeCards
+          desc="Lista"
+          iconType="list"
           nextComponent=""
           navigation={navigation}
         />
