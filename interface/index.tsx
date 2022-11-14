@@ -4,3 +4,11 @@ export interface ICards {
   nextComponent: string;
   navigation: any;
 }
+
+export interface IStudent {
+  cidade: string;
+  endereco: string;
+  foto: string;
+  matricula: string;
+  nome: string;
+}
