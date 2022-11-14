@@ -2,6 +2,7 @@ import { Button, HStack, Input, Text, TextArea, VStack } from "native-base";
 import { useAppState } from "native-base/lib/typescript/core/color-mode/hooks";
 import React from "react";
 import { addStudent } from "../../controlers/add-data";
+import { querryStudents } from "../../controlers/get-data";
 
 export function RegisterStudent({ navigation }: any) {
   const [matricula, setMatricula] = React.useState("");
@@ -17,6 +18,8 @@ export function RegisterStudent({ navigation }: any) {
     matricula: matricula,
     nome: nome,
   };
+  let students = querryStudents();
+  console.log(students);
 
   return (
     <VStack alignItems="center" space={4} mt="5">
@@ -54,6 +57,7 @@ export function RegisterStudent({ navigation }: any) {
       >
         Submit
       </Button>
+      <Text>Valores já cadastrados:</Text>
     </VStack>
   );
 }

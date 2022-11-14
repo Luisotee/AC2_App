@@ -1,7 +1,6 @@
 import { doc, setDoc } from "firebase/firestore";
 import db from ".";
 
-// Add a new document in collection "cities"
 export async function addStudent({ student }) {
   await setDoc(doc(db, "Aluno", student.nome), {
     cidade: student.cidade,
