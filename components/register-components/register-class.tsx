@@ -48,7 +48,9 @@ export function RegisterClass({ navigation }: any) {
         mx="10"
         mb="3"
         size="lg"
-        onPress={() => (addClass({ classRoom }), navigation.navigate("Home"))}
+        onPress={() => (
+          addClass({ classRoom }), navigation.navigate("TabsNav")
+        )}
       >
         Submit
       </Button>

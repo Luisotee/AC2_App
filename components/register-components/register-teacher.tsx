@@ -42,7 +42,9 @@ export function RegisterTeacher({ navigation }: any) {
         mx="10"
         mb="3"
         size="lg"
-        onPress={() => (addTeacher({ teacher }), navigation.navigate("Home"))}
+        onPress={() => (
+          addTeacher({ teacher }), navigation.navigate("TabsNav")
+        )}
       >
         Submit
       </Button>

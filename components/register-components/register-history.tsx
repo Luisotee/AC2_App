@@ -48,7 +48,9 @@ export function RegisterHistory({ navigation }: any) {
         mx="10"
         mb="3"
         size="lg"
-        onPress={() => (addHistory({ history }), navigation.navigate("Home"))}
+        onPress={() => (
+          addHistory({ history }), navigation.navigate("TabsNav")
+        )}
       >
         Submit
       </Button>

@@ -34,7 +34,9 @@ export function RegisterSubject({ navigation }: any) {
         mx="10"
         mb="3"
         size="lg"
-        onPress={() => (addSubject({ subject }), navigation.navigate("Home"))}
+        onPress={() => (
+          addSubject({ subject }), navigation.navigate("TabsNav")
+        )}
       >
         Submit
       </Button>

@@ -13,6 +13,6 @@ export async function querryStudents() {
     //console.log(students[i]);
     i++;
   });
-  console.log(students);
+  //console.log(students);
   return students;
 }
