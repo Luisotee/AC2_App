@@ -1,15 +1,16 @@
-import "react-native-gesture-handler";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Menu } from "./components/Menu/Menu";
+import "react-native-gesture-handler";
 import { AppWrapper } from "./components/app-wrapper";
-import { RegisterStudent } from "./components/register-components/register-student";
 import { ToggleDarkMode } from "./components/cards/dark-mode";
-import { RegisterSubject } from "./components/register-components/register-subject";
-import { RegisterTeacher } from "./components/register-components/register-teacher";
+import { Home } from "./components/home/home";
+import { Menu } from "./components/Menu/Menu";
 import { RegisterClass } from "./components/register-components/register-class";
 import { RegisterHistory } from "./components/register-components/register-history";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home } from "./components/home/home";
+import { RegisterStudent } from "./components/register-components/register-student";
+import { RegisterSubject } from "./components/register-components/register-subject";
+import { RegisterTeacher } from "./components/register-components/register-teacher";
+import { querryStudents } from "./controlers/get-data";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,7 +25,16 @@ export function TabsNav() {
   );
 }
 
+async function getData(props: string) {
+  //console.log(props);
+  const data = await querryStudents(props);
+  data.forEach((doc) => {
+    //console.log(doc.data());
+  });
+}
+
 export default function App() {
+  getData("Aluno");
   return (
     <AppWrapper>
       <Stack.Navigator initialRouteName="TabsNav">

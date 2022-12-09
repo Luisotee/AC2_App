@@ -1,12 +1,26 @@
-import { Button, HStack, Input, Text, TextArea, VStack } from "native-base";
-import React from "react";
+import {
+  Button,
+  FlatList,
+  HStack,
+  Input,
+  ScrollView,
+  Text,
+  TextArea,
+  VStack,
+} from "native-base";
+import React, { useEffect } from "react";
 import { addTeacher } from "../../controlers/add-data";
+import { querryStudents } from "../../controlers/get-data";
+import { IProfessor } from "../../interface";
 
 export function RegisterTeacher({ navigation }: any) {
   const [codigoProfessor, setCodigoProfessor] = React.useState("");
   const [nome, setNome] = React.useState("");
   const [endereco, setEndereco] = React.useState("");
   const [cidade, setCidade] = React.useState("");
+  const [arrayProfessor, setArrayProfessor] = React.useState<Array<IProfessor>>(
+    []
+  );
 
   let teacher = {
     cidade: cidade,
@@ -14,6 +28,30 @@ export function RegisterTeacher({ navigation }: any) {
     codigoProfessor: codigoProfessor,
     nome: nome,
   };
+
+  async function getData(props: string) {
+    const data = await querryStudents(props);
+
+    data.forEach((doc) => {
+      const subjectData = doc.data();
+      const professor = Object.assign({}, subjectData, {
+        cidade: subjectData.cidade,
+        cod_prof: subjectData.cod_prof,
+        endereco: subjectData.endereco,
+        nome: subjectData.nome,
+      });
+      setArrayProfessor((prevProfessores) => {
+        if (!Array.isArray(prevProfessores)) {
+          prevProfessores = [];
+        }
+        return prevProfessores.concat([professor]);
+      });
+    });
+  }
+
+  useEffect(() => {
+    getData("Professor");
+  }, []);
 
   return (
     <VStack alignItems="center" space={4} mt="5">
@@ -48,6 +86,16 @@ export function RegisterTeacher({ navigation }: any) {
       >
         Submit
       </Button>
+      <Text>Valores já cadastrados:</Text>
+      <FlatList
+        data={arrayProfessor}
+        keyExtractor={(professor) => professor.nome}
+        renderItem={({ item: professor }) => (
+          <ScrollView>
+            <Text>{professor.nome}</Text>
+          </ScrollView>
+        )}
+      ></FlatList>
     </VStack>
   );
 }

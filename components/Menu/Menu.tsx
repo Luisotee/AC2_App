@@ -7,12 +7,6 @@ export function Menu({ navigation }: any) {
     <>
       <VStack justifyContent="center">
         <HomeCards
-          desc="Configurações"
-          iconType="settings"
-          nextComponent="ToggleDarkMode"
-          navigation={navigation}
-        />
-        <HomeCards
           desc="Cadastrar Aluno"
           iconType="input"
           nextComponent="RegisterStudent"
